@@ -9,3 +9,11 @@
 {{-- Css --}}
 
 @vite('resources/css/app.css')
+
+{{-- Custom Style --}}
+
+<style>
+    [x-cloak] {
+      display: none !important;
+    }
+    </style>
