@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/login', fn () => view('pages.login')); 
+Route::get('/menu-karyawan', fn () => view('pages.menu-karyawan'));
