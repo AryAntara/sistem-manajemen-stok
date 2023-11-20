@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.dashboard');
 });
+Route::prefix('/login')->group(function () {
+    Route::get('/', fn() => view('pages.login'));
+    Route::post('/', [LoginController::class, 'authenticate' ]);
+});
 
-Route::get('/login', fn () => view('pages.login')); 
 Route::get('/menu-karyawan', fn () => view('pages.menu-karyawan'));
+
