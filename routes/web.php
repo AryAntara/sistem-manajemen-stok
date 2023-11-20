@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.dashboard');
 });
-
-Route::get('/login', fn () => view('pages.login')); 
+Route::prefix('/login')->group(function () {
+    Route::get('/', fn() => view('pages.login'));
+    Route::post('/', [LoginController::class, 'authenticate' ]);
+});
