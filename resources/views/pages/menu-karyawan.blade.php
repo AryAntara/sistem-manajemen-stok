@@ -1,5 +1,4 @@
 @extends('layouts.default')
-
 @section('content')
     <div class="flex">
         <!-- Component Sidebar Start -->
@@ -41,46 +40,50 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="py-2 px-1 border-1 bg-green-50">testt</td>
-                                <td class="py-2 px-1 border-1 bg-green-50">testt</td>
-                                <td class="py-2 px-1 border-1 bg-green-50">testt</td>
-                                <td class="py-2 px-1 border-1 bg-green-50">testt</td>
-                                <td class="py-2 px-1 border-1 bg-green-50">testt</td>
-                                <td class="py-2 px-1 border-1 bg-green-50 w-[300px]">
+                                <td class="py-2 px-2 border-1 bg-green-50">testt</td>
+                                <td class="py-2 px-2 border-1 bg-green-50">testt</td>
+                                <td class="py-2 px-2 border-1 bg-green-50">testt</td>
+                                <td class="py-2 px-2 border-1 bg-green-50">testt</td>
+                                <td class="py-2 px-2 border-1 bg-green-50">testt</td>
+                                <td class="py-2 px-2 border-1 bg-green-50 w-[300px]">
                                     <div class="flex">
-                                        <div class="mx-1 p-2">
-                                            <bi class="text-xl bi-eye-fill"></bi>
-                                        </div>
 
-                                        <div class="mx-1 p-2">
-                                            <bi class="text-xl bi-trash-fill"></bi>
-                                        </div>
+                                        <div x-data='{isShowText: false, isShowModalDetail: false}'>
+                                        <button
+                                            class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
+                                            
+                                            x-on:mouseover="isShowText = !isShowText"
+                                            x-on:mouseout="isShowText = !isShowText" x-on:click="isShowModalDetail = true">
+                                            <bi class="text-xl bi-eye-fill mx-1"></bi>
+                                            <p x-show='isShowText' class="font-bold mx-1">detail</p>
+                                        </button>
 
-                                        <div class="mx-1 p-2">
-                                            <bi class="text-xl bi-pencil-fill"></bi>
-                                        </div>
+
+                                        @php
+                                            $id = 1;
+                                        @endphp
+                                        <x-karyawan-modal-detail>
+                                            {{ $id }}
+                                        </x-karyawan-modal-detail>
+                                    </div>
+
+
+                                        <button x-data='{isShowText: false}'
+                                            class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
+                                            x-on:mouseover="isShowText = !isShowText"
+                                            x-on:mouseout="isShowText = !isShowText">
+                                            <bi class="text-xl bi-trash-fill mx-1"></bi>
+                                            <p x-show='isShowText' class="font-bold mx-1">delete</p>
+                                        </button>
+                                        <button x-data='{isShowText: false}'
+                                            class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
+                                            x-on:mouseover="isShowText = !isShowText"
+                                            x-on:mouseout="isShowText = !isShowText">
+                                            <bi class="text-xl bi-pencil-fill mx-1"></bi>
+                                            <p x-show='isShowText' class="font-bold mx-1">edit</p>
+                                        </button>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-1 border-1">testt</td>
-                                <td class="py-2 px-1 border-1">testt</td>
-                                <td class="py-2 px-1 border-1">testt</td>
-                                <td class="py-2 px-1 border-1">testt</td>
-                                <td class="py-2 px-1 border-1">testt</td>
-                                <td class="py-2 px-1 border-1"> <div class="flex">
-                                    <div class="mx-1 p-2">
-                                        <bi class="text-xl bi-eye-fill"></bi>
-                                    </div>
-
-                                    <div class="mx-1 p-2">
-                                        <bi class="text-xl bi-trash-fill"></bi>
-                                    </div>
-
-                                    <div class="mx-1 p-2">
-                                        <bi class="text-xl bi-pencil-fill"></bi>
-                                    </div>
-                                </div></td>
                             </tr>
                         </tbody>
                     </table>

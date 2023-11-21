@@ -1,12 +1,14 @@
 import './bootstrap';
-
+import { KaryawanModal } from "./pages/karyawan";
 // Alpine JS setup
 
 import Alpine from 'alpinejs'
 
-window.Alpine = Alpine
-
-Alpine.start()
-
+document.addEventListener('DOMContentLoaded', function () {    
+    window.Alpine = Alpine
+    Alpine.start()
+    console.log(KaryawanModal);
+    Alpine.data('karyawan_modal', () => KaryawanModal);
+});
 
 
