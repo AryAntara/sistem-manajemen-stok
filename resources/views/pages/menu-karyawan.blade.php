@@ -49,23 +49,23 @@
                                     <div class="flex">
 
                                         <div x-data='{isShowText: false, isShowModalDetail: false}'>
-                                        <button
-                                            class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
-                                            
-                                            x-on:mouseover="isShowText = !isShowText"
-                                            x-on:mouseout="isShowText = !isShowText" x-on:click="isShowModalDetail = true">
-                                            <bi class="text-xl bi-eye-fill mx-1"></bi>
-                                            <p x-show='isShowText' class="font-bold mx-1">detail</p>
-                                        </button>
+                                            <button
+                                                class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
+                                                x-on:mouseover="isShowText = !isShowText"
+                                                x-on:mouseout="isShowText = !isShowText"
+                                                x-on:click="isShowModalDetail = true">
+                                                <bi class="text-xl bi-eye-fill mx-1"></bi>
+                                                <p x-show='isShowText' class="font-bold mx-1">detail</p>
+                                            </button>
 
 
-                                        @php
-                                            $id = 1;
-                                        @endphp
-                                        <x-karyawan-modal-detail>
-                                            {{ $id }}
-                                        </x-karyawan-modal-detail>
-                                    </div>
+                                            @php
+                                                $id = 1;
+                                            @endphp
+                                            <x-karyawan-modal-detail>
+                                                {{ $id }}
+                                            </x-karyawan-modal-detail>
+                                        </div>
 
 
                                         <button x-data='{isShowText: false}'
@@ -75,13 +75,23 @@
                                             <bi class="text-xl bi-trash-fill mx-1"></bi>
                                             <p x-show='isShowText' class="font-bold mx-1">delete</p>
                                         </button>
-                                        <button x-data='{isShowText: false}'
-                                            class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
-                                            x-on:mouseover="isShowText = !isShowText"
-                                            x-on:mouseout="isShowText = !isShowText">
-                                            <bi class="text-xl bi-pencil-fill mx-1"></bi>
-                                            <p x-show='isShowText' class="font-bold mx-1">edit</p>
-                                        </button>
+                                        <div x-data='{isShowText: false, isShowModalEdit: false}'>
+                                            <button
+                                                class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
+                                                x-on:mouseover="isShowText = !isShowText"
+                                                x-on:mouseout="isShowText = !isShowText"
+                                                x-on:click="isShowModalEdit = true">
+                                                <bi class="text-xl bi-pencil-fill mx-1"></bi>
+                                                <p x-show='isShowText' class="font-bold mx-1">edit</p>
+                                            </button>
+
+                                            @php
+                                                $id = 1;
+                                            @endphp
+                                            <x-karyawan-modal-edit>
+                                                {{ $id }}
+                                            </x-karyawan-modal-edit>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
