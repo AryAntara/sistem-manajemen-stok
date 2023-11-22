@@ -16,14 +16,14 @@
             <div class="grid grid-cols-2 gap-8 mt-8 text-gray-500">
                 <div>
                     <p class="font-bold mb-2">Email :</p>
-                    <div class="bg-orange-200 rounded-full ps-2 w-[300px] text-gray-900">
+                    <div class="bg-orange-200 rounded-full p-2 w-[300px] text-gray-900">
                         I Komang Ary Antara
                     </div>
                 </div>
 
                 <div>
                     <p class="font-bold mb-2">Hobi :</p>
-                    <div class="bg-orange-200 rounded-full ps-2 w-[300px] text-gray-900">
+                    <div class="bg-orange-200 rounded-full p-2 w-[300px] text-gray-900">
                         Dengerin Musik
                     </div>
                 </div>
