@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('profile_photo');
             $table->string('phone_number', 16);
-            $table->string('address');
-            $table->string('email');
+            $table->string('address');            
             $table->string('username');
             $table->string('password');
             $table->unsignedInteger('id_role_staffs');
-            $table->timestamp('deleted_at');
+            $table->timestamp('deleted_at')->nullable(); 
+            $table->date('birth_date');
             $table->timestamps();
         });
     }

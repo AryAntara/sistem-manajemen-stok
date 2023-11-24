@@ -21,15 +21,16 @@
                         </div>
                     @endif
                     <div class="my-2">
-                        <input name="email"
+                        <input name="username"
                             class="w-[400px] bg-[#050505] outline-none border p-2 px-4 rounded-full text-gray-100"
-                            type="text" id="username" placeholder="Masukan Email" value="{{ old('email') }}">
+                            type="text" id="username" placeholder="Masukan Username" value="{{ old('username') }}">
                     </div>
                     <div class="my-2">
 
                         <div class="w-[400px] flex" x-data="{
                             visible: false,
                             type: 'password',
+                            valuePassword: '',
                             toggle() {
                                 this.visible = !this.visible;
                                 this.type = this.visible ? 'text' : 'password';
@@ -37,7 +38,7 @@
                         }">
                             <input name="password"
                                 class="w-[350px] outline-none bg-[#050505] p-2 px-4 rounded-s-full text-gray-100"
-                                :type='type' id="password" placeholder="Masukan Password">
+                                :type='type' id="password" value='' placeholder="Masukan Password">
 
                             {{-- toggle password visible --}}
                             <div class="w-[50px] bg-[#050505] flex justify-center items-center rounded-e-full "
@@ -67,7 +68,7 @@
 
                     </div>
                     <div class="my-2">
-                        <button class="w-[400px] bg-[#94C0AC] p-2 text-white rounded-full">Masuk</button>
+                        <button class="w-[400px] bg-[#94C0AC] hover:bg-[#368D5B] p-2 text-white rounded-full" x-text="valuePassword">Masuk</button>
                     </div>
                     <a href="" class="text-center text-gray-500 mt-4">Engsap ajak password?</a>
                 </div>

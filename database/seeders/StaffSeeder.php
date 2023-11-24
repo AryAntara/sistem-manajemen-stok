@@ -16,8 +16,9 @@ class StaffSeeder extends Seeder
         
         \App\Models\Staff::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => Hash::make('12345678')
+            'username' => "Test",
+            'password' => Hash::make('12345678'),
+            'deleted_at' => null
         ]);
     }
 }

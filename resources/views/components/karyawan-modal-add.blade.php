@@ -1,4 +1,4 @@
-<div x-show='isShowModalEdit'>
+<div x-show='isShowModalAdd'>
     <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
     <div class="w-screen h-screen absolute bg-gray-900 bg-opacity-50 top-0 left-0 flex justify-center items-center">
         <div class="bg-white rounded-2xl shadow-lg h-max flex flex-col items-center w-max px-24 pb-16">
@@ -13,7 +13,8 @@
             </div>
             {{-- Name --}}
             <div>
-                <input class="text-2xl font-bold text-[#368D5B] mt-4 border-b-2 pb-1 border-[#368D5B] outline-none" value="I Komang Ary antara" placeholder="Write the name here...">
+                <input class="text-2xl font-bold text-[#368D5B] mt-4 border-b-2 pb-1 border-[#368D5B] outline-none"
+                    placeholder="Write the name here...">
                 <bi class="bi-pencil-fill"></bi>
             </div>
             {{-- Role --}}
@@ -22,45 +23,45 @@
                 <option value="2">Desainner</option>
             </select>
             {{-- Detail data --}}
-            <div class="grid grid-cols-2 gap-8 mt-8 text-gray-500">
+            <div class="grid grid-cols-2 gap-8 mt-8 text-gray-600">
                 <div>
                     <p class="font-bold mb-2">Email :</p>
-                    <input class="bg-orange-200 rounded-full p-2 w-[300px]" value="I Komang Ary Antara">
+                    <input class="bg-orange-200 rounded-full p-2 w-[300px] outline-none">
                 </div>
 
                 <div>
                     <p class="font-bold mb-2">Hobi :</p>
-                    <input class="bg-orange-200 rounded-full p-2 w-[300px]" value="Dengerin Musik">
+                    <input class="bg-orange-200 rounded-full p-2 w-[300px] outline-none">
                 </div>
 
                 <div>
                     <p class="font-bold mb-2">Game Favorit :</p>
-                    <input class="bg-orange-200 rounded-full p-2 w-[300px]" value="Wild Rift">
+                    <input class="bg-orange-200 rounded-full p-2 w-[300px] outline-none">
                 </div>
 
                 <div>
                     <p class="font-bold mb-2">Anime Favorit :</p>
-                    <input class="bg-orange-200 rounded-full p-2 w-[300px]" value="Kimi No Nawa">
+                    <input class="bg-orange-200 rounded-full p-2 w-[300px] outline-none">
                 </div>
 
                 <div>
                     <p class="font-bold mb-2">No Hp :</p>
-                    <input class="bg-orange-200 rounded-full p-2 w-[300px]" value="+1 111 222 342435">
+                    <input class="bg-orange-200 rounded-full p-2 w-[300px] outline-none">
                 </div>
 
                 <div>
                     <p class="font-bold mb-2">Kelas :</p>
-                    <input class="bg-orange-200 rounded-full p-2 w-[300px]" value="Sistem Informasi">
+                    <input class="bg-orange-200 rounded-full p-2 w-[300px] outline-none">
                 </div>
             </div>
             {{-- Back button --}}
 
             <div class="w-full flex justify-end mt-8">
                 <button class="bg-[#368D5B] mx-2 p-2 rounded-full text-white px-4 mt-2 font-bold w-max"
-                    x-on:click="isShowModalEdit = false">
-                    <i class="bi bi-arrow-up-circle-fill me-2"></i> Update</button>
+                    x-on:click="isShowModalAdd = false">
+                    <i class="bi bi-plus me-2"></i> Tambah</button>
                 <button class="bg-[#368D5B] p-2 rounded-full text-white px-4 mt-2 font-bold w-max"
-                    x-on:click="isShowModalEdit = false">
+                    x-on:click="isShowModalAdd = false">
                     <i class="bi bi-x-circle-fill me-2"></i> Batal</button>
             </div>
 

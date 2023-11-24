@@ -20,14 +20,14 @@ class StaffFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            "email" => fake()->unique()->safeEmail(),
+            //            
             "password" => static::$password ??= Hash::make('1234567'),
             'profile_photo' => fake()->word(),
             'phone_number' => fake()->word(),
             'address' => fake()->word(),            
             'username' => fake()->word(),            
             'name' => fake()->word(),
+            'birth_date' => fake()->date(),
             'id_role_staffs' => 1,
         ];
     }
