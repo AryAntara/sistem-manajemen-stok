@@ -21,9 +21,9 @@
                     </div>
 
                     <div x-data='{isShowText: false, isShowModalAdd: false}'>
-                        <button class="bg-[#368D5B] text-xl rounded-full text-white p-2"
+                        <button class="bg-[#368D5B] text-xl rounded-full text-white p-2 shadow-xl border-2"
                             x-on:click="isShowModalAdd = !isShowModalAdd">
-                            <i class="text-2xl bi bi-plus m-1"></i>
+                            <i class="text-2xl bi bi-plus-circle-fill m-1"></i>
                         </button>
 
                         @php
@@ -35,12 +35,12 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full h-[600px] pb-8 pt-8">
+            <div class="w-full h-[600px] pb-14 pt-0 border-2 shadow-xl rounded-xl">
                 <div class="overflow-y-scroll h-full">
-                    <table class="w-full border-1">
+                    <table class="w-full px-4">
                         <thead class="text-[#368D5B] border-b font-bold align-left p-32">
                             <tr class="">
-                                <th class="py-2" align="left">No</th>
+                                <th class="py-2" align="center">No</th>
                                 <th class="py-2" align="left">Nama</th>
                                 <th class="py-2" align="left">Jabatan</th>
                                 <th class="py-2" align="left">Usia</th>
@@ -52,10 +52,11 @@
                         <tbody>
                             @foreach ($staff_entries as $index => $employer_entry)
                                 <tr>
-                                    <td {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}>{{ ($page - 1)  * 10 + $index + 1 }}</td>
+                                    <td class="{{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }} font-bold" align="center">
+                                        {{ ($page - 1) * 10 + $index + 1 }}.</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         {{ $employer_entry->name }}</td>
-                                    <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">testt
+                                    <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">Kasir
                                     </td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         {{ $employer_entry->age }} Tahun</td>
@@ -63,42 +64,46 @@
                                         {{ $employer_entry->username }}</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         {{ $employer_entry->phone_number }}</td>
-                                    <td
-                                        class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }} w-[300px]">
+                                    <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }} w-[300px]">
                                         <div class="flex">
 
                                             <div x-data='{isShowText: false, isShowModalDetail: false}'>
                                                 <button
-                                                    class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
-                                                    x-on:mouseover="isShowText = !isShowText"
-                                                    x-on:mouseout="isShowText = !isShowText"
+                                                    class="shadow-xl mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center hover:bg-white hover:text-[#368D58]"
                                                     x-on:click="isShowModalDetail = true">
                                                     <bi class="text-xl bi-eye-fill mx-1"></bi>
                                                     <p x-show='isShowText' class="font-bold mx-1">detail</p>
                                                 </button>
 
+                                                <x-karyawan-modal-detail  :username="$employer_entry->username" :phoneNumber="$employer_entry->phone_number" :address="$employer_entry->address" :name="$employer_entry->name" :age="$employer_entry->age" :profile="$employer_entry->profile_photo"
+                                                    >
 
-                                                @php
-                                                    $id = 1;
-                                                @endphp
-                                                <x-karyawan-modal-detail>
-                                                    {{ $id }}
                                                 </x-karyawan-modal-detail>
                                             </div>
 
+                                            <div x-data='{isShowAlert: false}'>
+                                                <button x-data='{isShowText: false}'
+                                                    class="mx-1 shadow-xl p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center hover:bg-white hover:text-[#368D58]"
+                                                    x-on:click="isShowAlert = true">
+                                                    <bi class="text-xl bi-trash-fill mx-1"></bi>
+                                                    <p x-show='isShowText' class="font-bold mx-1">delete</p>
+                                                </button>
+                                                <x-alert>
 
-                                            <button x-data='{isShowText: false}'
-                                                class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
-                                                x-on:mouseover="isShowText = !isShowText"
-                                                x-on:mouseout="isShowText = !isShowText">
-                                                <bi class="text-xl bi-trash-fill mx-1"></bi>
-                                                <p x-show='isShowText' class="font-bold mx-1">delete</p>
-                                            </button>
+                                                    {{-- Alert Yes --}}
+                                                    <a href="{{ route('staff.delete', ['staff_id' => $employer_entry->id]) }}"
+                                                        class="w-max h-max bg-gray-200 text-center font-bold p-2 m-2 pe-4 rounded-full">
+                                                        <div class="flex w-auto justify-left">
+                                                            <i class="bi bi-check-circle-fill me-2"></i>
+                                                            <p class="font-bold">Ya</p>
+                                                        </div>
+                                                    </a>
+
+                                                </x-alert>
+                                            </div>
                                             <div x-data='{isShowText: false, isShowModalEdit: false}'>
                                                 <button
-                                                    class="mx-1 p-2 rounded-full w-max text-white bg-[#368D5B] flex items-center"
-                                                    x-on:mouseover="isShowText = !isShowText"
-                                                    x-on:mouseout="isShowText = !isShowText"
+                                                    class="mx-1 p-2 shadow-xl rounded-full w-max text-white bg-[#368D5B] flex items-center hover:bg-white hover:text-[#368D58]"
                                                     x-on:click="isShowModalEdit = true">
                                                     <bi class="text-xl bi-pencil-fill mx-1"></bi>
                                                     <p x-show='isShowText' class="font-bold mx-1">edit</p>
@@ -118,19 +123,19 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="flex justify-end mt-2">
+                <div class="flex justify-end mt-2 me-2">
                     <div class="rounded-full w-max h-[40px] bg-gray-100 flex items-center">
 
                         <button class="hover:bg-[#368D5B] hover:text-white text-[#368D5B] m-2 rounded-full p-1 px-2">
                             <i class="text-xl bi bi-chevron-left"></i>
-                        </button>
+                        </button>                        
                         @if ($staff_pages_length === 0)
                             <button class="bg-[#368D5B] text-white my-2 rounded-full p-1 px-2">
                                 1
                             </button>
                         @endif
-                        @for ($i = 1; $i < $staff_pages_length + 1; $i++)
-                            <a href="{{ route('staff')."?page=$i&limit=10" }}">
+                        @for ($i = 1; $i <= $staff_pages_length; $i++)
+                            <a href="{{ route('staff') . "?page=$i&limit=10" }}">
                                 <button
                                     class="my-2 rounded-full mx-1 p-2 px-4 {{ $page == $i ? 'bg-[#368D5B] text-white' : 'hover:bg-[#368D5B] hover:text-white  text-[#368D5B]' }}">
                                     {{ $i }}

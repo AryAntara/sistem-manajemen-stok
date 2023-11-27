@@ -31,6 +31,7 @@ Route::
 
 Route::prefix('/menu-karyawan')->group(function () {
     Route::get('/', [StaffController::class, 'index'])->name('staff');
+    Route::get('/{staff_id}', [StaffController::class,'delete'])->name('staff.delete');
 });
 
 Route::get('/dashboard', fn() => view('pages.dashboard'))->name('dashboard');
