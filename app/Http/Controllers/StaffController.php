@@ -45,4 +45,24 @@ class StaffController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Create new staff entry
+     * 
+     * @param Request $request
+     * 
+     * @return RedirectResponse
+     */
+    public function create(Request $request){
+        $validated = $request->validate([
+            'name' => 'required',
+            'photo_profile' => 'required',
+            'phone_number' => 'required',
+            'role' => 'required',
+            'address' => 'required',
+            'birth_date' => 'date:d-m-Y'
+        ]);
+        dd($validated);
+        return redirect()->back();
+    }
+
 }

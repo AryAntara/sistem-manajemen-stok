@@ -26,12 +26,15 @@ Route::
                 Route::post('/', [LoginController::class, 'authenticate'])->name('auth.login');
             });
 
-            Route::get('/logout', [LoginController::class,'logout'])->name('auth.logout');
+            Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
         });
 
 Route::prefix('/menu-karyawan')->group(function () {
     Route::get('/', [StaffController::class, 'index'])->name('staff');
-    Route::get('/{staff_id}', [StaffController::class,'delete'])->name('staff.delete');
+    Route::get('/{staff_id}', [StaffController::class, 'delete'])->name('staff.delete');
+
+    // new staff
+    Route::post('/new', [StaffController::class, 'create'])->name('staff.create');
 });
 
 Route::get('/dashboard', fn() => view('pages.dashboard'))->name('dashboard');

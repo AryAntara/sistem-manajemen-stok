@@ -4,6 +4,10 @@
     @include("includes.head")
 </head>
 <body>
+
+    {{-- Loader --}}
+    <x-loader></x-loader>
+
     @yield('content')
     <div>
         @include("includes.footer")

@@ -75,8 +75,8 @@
                                                     <p x-show='isShowText' class="font-bold mx-1">detail</p>
                                                 </button>
 
-                                                <x-karyawan-modal-detail  :username="$employer_entry->username" :phoneNumber="$employer_entry->phone_number" :address="$employer_entry->address" :name="$employer_entry->name" :age="$employer_entry->age" :profile="$employer_entry->profile_photo"
-                                                    >
+                                                <x-karyawan-modal-detail :username="$employer_entry->username" :phoneNumber="$employer_entry->phone_number"
+                                                    :address="$employer_entry->address" :name="$employer_entry->name" :age="$employer_entry->age" :profile="$employer_entry->profile_photo">
 
                                                 </x-karyawan-modal-detail>
                                             </div>
@@ -128,7 +128,7 @@
 
                         <button class="hover:bg-[#368D5B] hover:text-white text-[#368D5B] m-2 rounded-full p-1 px-2">
                             <i class="text-xl bi bi-chevron-left"></i>
-                        </button>                        
+                        </button>
                         @if ($staff_pages_length === 0)
                             <button class="bg-[#368D5B] text-white my-2 rounded-full p-1 px-2">
                                 1
