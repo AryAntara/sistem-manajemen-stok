@@ -76,7 +76,7 @@
                                                 </button>
 
                                                 <x-karyawan-modal-detail :username="$staff_entry->username" :phoneNumber="$staff_entry->phone_number"
-                                                    :address="$staff_entry->address" :name="$staff_entry->name" :age="$staff_entry->age" :profile="$staff_entry->profile_photo_url">
+                                                    :address="$staff_entry->address" :name="$staff_entry->name" :age="$staff_entry->age" :profile="$staff_entry->profile_photo_url" :gender="$staff_entry->gender">
                                                 </x-karyawan-modal-detail>
                                             </div>
 

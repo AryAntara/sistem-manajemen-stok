@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('address');            
             $table->string('username');
             $table->string('password');
+            $table->string('token')->nullable(true);
+            $table->enum('gender', ['man', 'woman'])->default('man');
             $table->unsignedInteger('id_role_staffs');
             $table->timestamp('deleted_at')->nullable(); 
             $table->date('birth_date');

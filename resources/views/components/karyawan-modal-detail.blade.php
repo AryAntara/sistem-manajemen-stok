@@ -29,15 +29,23 @@
                 </div>
 
                 <div>
+                    <p class="font-bold mb-2">Gender :</p>
+                    <div class="bg-orange-200 rounded-full p-2 px-4 w-[300px] text-gray-600 font-bold">                        
+                        {{ $gender == 'man' ? 'Laki - Laki' : 'Perempuan'}}
+                        
+                    </div>
+                </div>
+
+                <div>
                     <p class="font-bold mb-2">Username </p>
                     <div class="bg-orange-200 rounded-full p-2 w-[300px] text-gray-600 px-4 font-bold">
                         {{ $username }}
                     </div>
                 </div>
 
-                <div>
+                <div class="col-span-2">
                     <p class="font-bold mb-2">Umur </p>
-                    <div class="bg-orange-200 rounded-full p-2 w-[300px] text-gray-600 px-4 font-bold">
+                    <div class="bg-orange-200 rounded-full p-2 text-gray-600 px-4 font-bold">
                         {{ $age }} Tahun
                     </div>
                 </div>

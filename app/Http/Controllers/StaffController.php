@@ -64,6 +64,7 @@ class StaffController extends Controller
             'birth_date' => 'date:d-m-Y',
             'username' => 'required',
             'password' => 'required',
+            'gender' => 'required',
             'profile_photo' => 'required|file'
         ], [
             'date' => 'Format tanggal tidak valid',
@@ -82,6 +83,7 @@ class StaffController extends Controller
         $staff_data = [
             'name' => $validated['name'],
             'profile_photo' => $filename,
+            'gender' => $validated['gender'],
             'phone_number' => $validated['phone_number'],
             'address' => $validated['address'],
             'username' => $validated['username'],
@@ -111,7 +113,8 @@ class StaffController extends Controller
             'role' => 'required',
             'address' => 'required',
             'birth_date' => 'date:d-m-Y',
-            'username' => 'required',                        
+            'username' => 'required', 
+            'gender' => 'required'
         ], [
             'date' => 'Format tanggal tidak valid',
             'required' => 'Data :attribute dibutuhkan'
@@ -121,8 +124,8 @@ class StaffController extends Controller
         $staff_entry = Staff::find($id);
 
         // save photo
-        $file = $request->file('profile_photo');
-        $new_filename = "";
+        $file = $request->file('profile_photo');        
+        $new_filename = $staff_entry->profile_photo;
         if ($file) {
             $filename = $staff_entry->profile_photo;
             $path = Config::get('filesystems.disks.public.profile');            
@@ -130,8 +133,7 @@ class StaffController extends Controller
             
             // delete older photo 
             $is_file = is_file($fullpath);
-            if($is_file) unlink($fullpath);
-            
+            if($is_file) unlink($fullpath);            
             // store new file 
             $new_filename = date('d_m_Y-H:i:s.') . $file->getClientOriginalExtension();
             $file->move($path, $new_filename);
@@ -145,6 +147,7 @@ class StaffController extends Controller
             'username' => $validated['username'],
             'password' => $request->input('password') ? Hash::make($request->input('password')) : $staff_entry->password,
             'id_role_staffs' => 1,
+            'gender' => $validated['gender'],
             'birth_date' => $validated['birth_date']
         ];
 

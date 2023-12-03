@@ -36,7 +36,9 @@ class Staff extends Model implements Authenticatable
         'username',
         'password',
         'id_role_staffs',
-        'birth_date'
+        'birth_date',
+        'gender',
+        'token'
     ];
 
     public function getAuthIdentifierName(): string

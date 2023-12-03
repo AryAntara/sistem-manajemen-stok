@@ -57,12 +57,21 @@
                     </div>
 
                     <div>
+                        <p class="font-bold mb-2">Gender :</p>
+                        <select class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" name="gender">
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option {{ $staff->gender == 'man' ? 'selected' : '' }} value="man">Laki - Laki</option>
+                            <option {{ $staff->gender == 'woman' ? 'selected' : '' }} value="woman">Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div>
                         <p class="font-bold mb-2">Username :</p>
                         <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" name="username"
                             value="{{ $staff->username }}" placeholder="Masukan Username...">
                     </div>
 
-                    <div class="col-span-2">
+                    <div>
                         <p class="font-bold mb-2">Password :</p>
                         <input class="bg-orange-200 rounded-full p-2 px-4 w-full outline-none" type="password"
                             placeholder="Masukan password baru..." name="password">

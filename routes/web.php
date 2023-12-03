@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.dashboard');
+    return redirect(route('dashboard'));
 });
+
 Route::
         namespace('Auth')->group(function () {
             Route::prefix('/login')->group(function () {

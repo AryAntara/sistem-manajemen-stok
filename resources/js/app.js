@@ -45,7 +45,6 @@ function showImage(id = null) {
         , imagePath = URL.createObjectURL(image)
         , imageWrapper = document.getElementById(idProfileWrapper)
 
-    console.log(idPhotoProfile, idImageWrapper);
     // remove the shadow
     document.getElementsByClassName(idImageWrapper)[0].classList = `${idImageWrapper} absolute w-full h-full flex items-center justify-center top-0 border-4 border-dashed rounded-full`
     imageWrapper.src = imagePath
@@ -62,14 +61,14 @@ async function sendPost(selector) {
         , url = form.getAttribute('action')
         , formData = new FormData(form)
         , fields = Array.from(form.querySelectorAll('input, select')).map(item => item.getAttribute("name"))
-
+    
     try {
         await axios.post(url, formData)
         location.reload()
     } catch (err) {
         const res = err.response
             , errData = res.data
-
+        
         mapFormError(errData.errors, fields, selector)
     }
 }
@@ -88,24 +87,24 @@ function mapFormError(errors, fields, formSelector = 'form') {
 
     // parsing id 
     let id = formSelector.split('-');
-    id = id[id.length - 1];    
+    id = parseInt(id[id.length - 1]);
 
     fields.forEach((fieldName) => {
-        document.querySelector(`.message-error-${fieldName}`)?.remove()        
+        document.querySelector(`.message-error-${fieldName}`)?.remove()
         if (!Object.keys(errors).find(item => item === fieldName)) {
             return
         }
 
         // using the special function first if there to map the error
         if (customFormErrorMaps[fieldName]) {
-            customFormErrorMaps[fieldName](errors[fieldName], fieldName, id, selector)
+            customFormErrorMaps[fieldName](errors[fieldName], fieldName, id, formSelector)
             return
         }
 
         const errorMessageNode = document.createElement("p")
         errorMessageNode.classList = `text-red-500 message-error-${fieldName} font-bold mt-2`
         errorMessageNode.innerText = errors[fieldName][0]
-        
+
         const input = document.querySelector(`${formSelector} [name=${fieldName}]`)
         if (input) {
             const inputParent = input.parentNode
@@ -123,11 +122,12 @@ function mapFormError(errors, fields, formSelector = 'form') {
  * 
  * @return {void}
  */
-function mapErrorMessageOfPhotoProfile(errorMessage, fieldName, id = null) {
+function mapErrorMessageOfPhotoProfile(errorMessage, fieldName, id = null) {    
     const idImageWrapper = id ? `#photo-profile-wrapper-${id}` : '#photo-profile-wrapper'
         , imageWrapper = document.querySelector(idImageWrapper)
         , imageWrapperParentNode = imageWrapper.parentNode
 
+        
     // change color to red
     removeAndAddClass(imageWrapperParentNode, ["bg-gray-700"], ["bg-red-400"])
 
