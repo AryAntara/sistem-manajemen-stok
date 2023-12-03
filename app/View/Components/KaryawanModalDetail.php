@@ -13,7 +13,7 @@ class KaryawanModalDetail extends Component
     public $phone_number;
     public $age;
     public $address;
-    public $profile;
+    public $profile_photo_url;
 
     /**
      * Create a new component instance.
@@ -25,7 +25,7 @@ class KaryawanModalDetail extends Component
         $this->phone_number = $phoneNumber;
         $this->age = $age;
         $this->address = $address;        
-        $this->profile = $profile;
+        $this->profile_photo_url = $profile;
     }
 
     /**
@@ -39,7 +39,7 @@ class KaryawanModalDetail extends Component
             "phone_number"=> $this->phone_number,
             "age"=> $this->age,
             "address"=> $this->address,
-            "profile_image" => !is_file(public_path('images/profile/'.$this->profile)) ? null : $this->profile
+            "profile_photo_url" => $this->profile_photo_url
         ];
         return view('components.karyawan-modal-detail', $data);
     }

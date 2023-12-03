@@ -1,9 +1,9 @@
 <div x-show='isShowModalAdd'>
-    <form action="{{ route('staff.create') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('staff.create') }}" enctype="multipart/form-data" id="staff-create">
         @csrf
         <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
-        <div class="w-screen h-screen absolute bg-gray-900 bg-opacity-50 top-0 left-0 flex justify-center items-center">
-            <div class="bg-white rounded-2xl shadow-lg h-max flex flex-col items-center w-max px-24 pb-16">
+        <div class="w-screen h-screen fixed overflow-y-scroll bg-gray-900 bg-opacity-50 top-0 left-0 flex justify-center items-center">            
+            <div class="bg-white rounded-2xl shadow-lg h-max flex flex-col items-center w-max px-24 pb-16 absolute top-8 bottom-11">
                 {{-- Profile Wrapper --}}
                 <div class="rounded-full overflow-hidden w-64 h-64 bg-gray-700 mt-8 relative"
                     x-data='{ isShowPlaceholderImage: true}'>
@@ -12,7 +12,7 @@
                         class="image-wrapper absolute w-full h-full flex items-center justify-center top-0 bg-gray-800 bg-opacity-50 border-4 border-dashed rounded-full"
                         x-on:click='isShowPlaceholderImage = false'>
                         <p x-show="isShowPlaceholderImage" class="w-64 text-3xl text-white text-center font-bold">
-                            Klik untuk Menganti Gambar
+                            Klik untuk Menambahkan Gambar
                         </p>
                         <input type="file" class="hidden" id="photo-profile" x-on:change='$store.image.showImage'
                             name="profile_photo" accept="image/jpg,image/png,image/jpeg">
@@ -35,28 +35,28 @@
                     <div>
                         <p class="font-bold mb-2">Nomor HP :</p>
                         <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" type="number"
-                            name="phone_number">
+                            name="phone_number" placeholder="Masukan Nomor Hp...">
                     </div>
 
                     <div>
                         <p class="font-bold mb-2">Alamat :</p>
-                        <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" name="address">
+                        <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" name="address" placeholder="Masukan Alamat...">
                     </div>
 
                     <div>
                         <p class="font-bold mb-2">Tanggal Lahir :</p>
-                        <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" type="date"
+                        <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" type="date" placeholder="Masukan Tanggal lahir"
                             name="birth_date">
                     </div>
 
                     <div>
                         <p class="font-bold mb-2">Username :</p>
-                        <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" name="username">
+                        <input class="bg-orange-200 rounded-full p-2 px-4 w-[300px] outline-none" name="username" placeholder="Masukan username...">
                     </div>
 
                     <div class="col-span-2">
                         <p class="font-bold mb-2">Password :</p>
-                        <input class="bg-orange-200 rounded-full p-2 px-4 w-full outline-none" type="password"
+                        <input class="bg-orange-200 rounded-full p-2 px-4 w-full outline-none" type="password" placeholder="Masukan Password..."
                             name="password">
                     </div>
 
@@ -65,7 +65,8 @@
 
                 <div class="w-full flex justify-end mt-8">
                     <button class="bg-[#368D5B] mx-2 p-2 rounded-full text-white px-4 mt-2 font-bold w-max"
-                        x-on:click="isShowModalAdd = false" type="submit">
+                        x-on:click='$store.form.sendPost("form#staff-create")'
+                        x-on:click="isShowModalAdd = false" type="button">
                         <i class="bi bi-plus-circle-fill me-2"></i> Tambah</button>
                     <button class="bg-[#368D5B] p-2 rounded-full text-white px-4 mt-2 font-bold w-max"
                         x-on:click="isShowModalAdd = false">

@@ -50,20 +50,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($staff_entries as $index => $employer_entry)
+                            @foreach ($staff_entries as $index => $staff_entry)
                                 <tr>
                                     <td class="{{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }} font-bold" align="center">
                                         {{ ($page - 1) * 10 + $index + 1 }}.</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
-                                        {{ $employer_entry->name }}</td>
+                                        {{ $staff_entry->name }}</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">Kasir
                                     </td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
-                                        {{ $employer_entry->age }} Tahun</td>
+                                        {{ $staff_entry->age }} Tahun</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
-                                        {{ $employer_entry->username }}</td>
+                                        {{ $staff_entry->username }}</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
-                                        {{ $employer_entry->phone_number }}</td>
+                                        {{ $staff_entry->phone_number }}</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }} w-[300px]">
                                         <div class="flex">
 
@@ -75,9 +75,8 @@
                                                     <p x-show='isShowText' class="font-bold mx-1">detail</p>
                                                 </button>
 
-                                                <x-karyawan-modal-detail :username="$employer_entry->username" :phoneNumber="$employer_entry->phone_number"
-                                                    :address="$employer_entry->address" :name="$employer_entry->name" :age="$employer_entry->age" :profile="$employer_entry->profile_photo">
-
+                                                <x-karyawan-modal-detail :username="$staff_entry->username" :phoneNumber="$staff_entry->phone_number"
+                                                    :address="$staff_entry->address" :name="$staff_entry->name" :age="$staff_entry->age" :profile="$staff_entry->profile_photo_url">
                                                 </x-karyawan-modal-detail>
                                             </div>
 
@@ -91,7 +90,7 @@
                                                 <x-alert>
 
                                                     {{-- Alert Yes --}}
-                                                    <a href="{{ route('staff.delete', ['staff_id' => $employer_entry->id]) }}"
+                                                    <a href="{{ route('staff.delete', ['staff_id' => $staff_entry->id]) }}"
                                                         class="w-max h-max bg-gray-200 text-center font-bold p-2 m-2 pe-4 rounded-full">
                                                         <div class="flex w-auto justify-left">
                                                             <i class="bi bi-check-circle-fill me-2"></i>
@@ -108,12 +107,8 @@
                                                     <bi class="text-xl bi-pencil-fill mx-1"></bi>
                                                     <p x-show='isShowText' class="font-bold mx-1">edit</p>
                                                 </button>
-
-                                                @php
-                                                    $id = 1;
-                                                @endphp
-                                                <x-karyawan-modal-edit>
-                                                    {{ $id }}
+                                                
+                                                <x-karyawan-modal-edit :id="$staff_entry->id" :staff="$staff_entry">                                                    
                                                 </x-karyawan-modal-edit>
                                             </div>
                                         </div>

@@ -31,10 +31,9 @@ Route::
 
 Route::prefix('/menu-karyawan')->group(function () {
     Route::get('/', [StaffController::class, 'index'])->name('staff');
-    Route::get('/{staff_id}', [StaffController::class, 'delete'])->name('staff.delete');
-
-    // new staff
+    Route::get('/{staff_id}', [StaffController::class, 'delete'])->name('staff.delete');    
     Route::post('/new', [StaffController::class, 'create'])->name('staff.create');
+    Route::post('/update/{id}', [StaffController::class, 'update'])->name('staff.update');
 });
 
-Route::get('/dashboard', fn() => view('pages.dashboard'))->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

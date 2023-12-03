@@ -69,8 +69,7 @@
                     </div>
                     <div class="my-2">
                         <button class="w-[400px] bg-[#94C0AC] hover:bg-[#368D5B] p-2 text-white rounded-full" x-text="valuePassword">Masuk</button>
-                    </div>
-                    <a href="" class="text-center text-gray-500 mt-4">Engsap ajak password?</a>
+                    </div>                    
                 </div>
             </form>
         </div>

@@ -4,7 +4,7 @@
         <div class="bg-white rounded-2xl shadow-lg h-max flex flex-col items-center w-max px-24 pb-16">
             {{-- Profile Wrapper --}}
             <div class="border-2 rounded-full overflow-hidden shadow-xl w-64 h-64 bg-[#368D5B] mt-8">
-                <img src="{{ asset($profile_image ? 'images/profile/' . $profile_image : 'images/profile/not-found.jpg') }}" alt="" class="w-92">
+                <img src="{{ $profile_photo_url }}" alt="" class="w-64 h-64 object-cover">
             </div>
             {{-- Name --}}
             <p class="text-2xl font-bold text-[#368D5B] mt-4 border-b-2 pb-1 border-[#368D5B]">

@@ -2,18 +2,28 @@
 
 namespace App\View\Components;
 
+use App\Models\Staff;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class KaryawanModalEdit extends Component
 {
+
+    private $id = "";
+    private Staff $staff;
+
     /**
+     * 
      * Create a new component instance.
+     * 
+     * @param int $id 
+     * @param Staff $staff 
      */
-    public function __construct()
+    public function __construct($id, $staff)
     {
-        //
+        $this->id = $id;
+        $this->staff = $staff;
     }
 
     /**
@@ -21,6 +31,8 @@ class KaryawanModalEdit extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.karyawan-modal-edit');
+        $id = $this->id;
+        $staff = $this->staff;
+        return view('components.karyawan-modal-edit', compact('id', 'staff'));
     }
 }
