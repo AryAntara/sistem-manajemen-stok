@@ -14,11 +14,15 @@
                     KARYAWAN
                 </div>
                 <div class="flex justify-between items-center mt-10">
-                    <div class="bg-[#368D5B] w-max p-1 rounded-full h-max">
-                        <i class="bi mx-2 bi-search text-white"></i>
-                        <input type="text" class="w-auto bg-[#368D5B] outline-none text-white mx-2 p-1 placeholder-white"
-                            placeholder="Cari nama staff...">
-                    </div>
+                    <form>
+                        <div class="bg-[#368D5B] w-max p-1 rounded-full h-max">
+                            <i class="bi mx-2 bi-search text-white"></i>
+                            <input type="text"
+                                class="w-auto bg-[#368D5B] outline-none text-white mx-2 p-1 placeholder-white"
+                                placeholder="Cari nama staff..." name="q" value="{{ $query ?? "" }}">
+
+                        </div>
+                    </form>
 
                     <div x-data='{isShowText: false, isShowModalAdd: false}'>
                         <button class="bg-[#368D5B] text-xl rounded-full text-white p-2 shadow-xl border-2"
@@ -76,7 +80,8 @@
                                                 </button>
 
                                                 <x-karyawan-modal-detail :username="$staff_entry->username" :phoneNumber="$staff_entry->phone_number"
-                                                    :address="$staff_entry->address" :name="$staff_entry->name" :age="$staff_entry->age" :profile="$staff_entry->profile_photo_url" :gender="$staff_entry->gender">
+                                                    :address="$staff_entry->address" :name="$staff_entry->name" :age="$staff_entry->age" :profile="$staff_entry->profile_photo_url"
+                                                    :gender="$staff_entry->gender">
                                                 </x-karyawan-modal-detail>
                                             </div>
 
@@ -107,8 +112,8 @@
                                                     <bi class="text-xl bi-pencil-fill mx-1"></bi>
                                                     <p x-show='isShowText' class="font-bold mx-1">edit</p>
                                                 </button>
-                                                
-                                                <x-karyawan-modal-edit :id="$staff_entry->id" :staff="$staff_entry">                                                    
+
+                                                <x-karyawan-modal-edit :id="$staff_entry->id" :staff="$staff_entry">
                                                 </x-karyawan-modal-edit>
                                             </div>
                                         </div>
@@ -117,6 +122,10 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    @if($staff_entries->count() < 1)
+                        <div class="w-100% text-3xl mt-24 font-bold text-gray-900/75 flex justify-center items-center">Data Kosong</div>
+                    @endif
                 </div>
                 <div class="flex justify-end mt-2 me-2">
                     <div class="rounded-full w-max h-[40px] bg-gray-100 flex items-center">

@@ -21,14 +21,22 @@ class StaffController extends Controller
     function index(Request $request)
     {
 
+        $staff_query = Staff::query();
+
         // paginate setup
         $page = $request->page ?? 1;
         $limit = $request->limit ?? 10;
         $skiped = ($page - 1) * $limit;
 
-        $staff_entries = Staff::take($limit)->skip($skiped)->get();
+        // search any staff ?
+        $query = $request->q;         
+        if($query){
+            $staff_query->where("name","like","%".$query."%");
+        }
+
+        $staff_entries = $staff_query->take($limit)->skip($skiped)->get();
         $staff_pages_length = (int) floor(Staff::count() / 10) + 1;
-        return view("pages.menu-karyawan", compact("staff_entries", "staff_pages_length", "page"));
+        return view("pages.menu-karyawan", compact("staff_entries", "staff_pages_length", "page", "query"));
     }
 
     /**
