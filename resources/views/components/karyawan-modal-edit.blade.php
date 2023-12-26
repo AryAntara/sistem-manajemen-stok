@@ -20,7 +20,7 @@
                             Klik untuk Menganti Gambar
                         </p>
                         <input type="file" class="hidden" id="photo-profile-{{ $id }}"
-                            x-on:change='$store.image.showImage("{{ $id }}")' name="profile_photo"
+                            x-on:change='$store.profile.showImage("{{ $id }}")' name="profile_photo"
                             accept="image/jpg,image/png,image/jpeg">
                     </label>
                 </div>

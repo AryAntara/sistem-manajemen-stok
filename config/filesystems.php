@@ -45,11 +45,10 @@ return [
 
             // child path
             'profile' => storage_path('app/public/profile'),
+            'product' => storage_path('app/public/product')
         ],
 
-        
-        
-          
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

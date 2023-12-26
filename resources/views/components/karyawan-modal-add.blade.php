@@ -16,7 +16,7 @@
                         <p x-show="isShowPlaceholderImage" class="w-64 text-3xl text-white text-center font-bold">
                             Klik untuk Menambahkan Gambar
                         </p>
-                        <input type="file" class="hidden" id="photo-profile" x-on:change='$store.image.showImage(null)'
+                        <input type="file" class="hidden" id="photo-profile" x-on:change='$store.profile.showImage(null)'
                             name="profile_photo" accept="image/jpg,image/png,image/jpeg">
                     </label>
                 </div>

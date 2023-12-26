@@ -8,37 +8,37 @@
 				<i class="mx-2 bi bi-house-fill"></i>
                 <span class="text-gray-900 font-bold text-black">Dashboard</span>
             </div>
-        </a>     
+        </a>
 
 		<hr class="my-2 border-t-1 w-[200px]"></hr>
 
-        <a class="mt-4" href="{{ route('staff') }}">
-            <div class="p-2 shadow-lg {{ $slot == 'role_staff' ? 'bg-orange-300' : 'bg-[#ffffff]' }} w-[200px] rounded-3xl hover:bg-orange-300 text-left align-center">
+        <a class="mt-4" href="{{ route('product') }}">
+            <div class="p-2 shadow-lg {{ $slot == 'product' ? 'bg-orange-300' : 'bg-[#ffffff]' }} w-[200px] rounded-3xl hover:bg-orange-300 text-left align-center">
 				<i class="mx-2 bi bi-box2-fill"></i>
                 <span class="text-gray-900 font-bold text-black">Produk</span>
             </div>
-        </a>     
+        </a>
 
         <a class="mt-4" href="{{ route('staff') }}">
             <div class="p-2 shadow-lg {{ $slot == 'role_staff' ? 'bg-orange-300' : 'bg-[#ffffff]' }} w-[200px] rounded-3xl hover:bg-orange-300 text-left align-center">
 				<i class="mx-2 bi bi-box-fill"></i>
                 <span class="text-gray-900 font-bold text-black">Stok</span>
             </div>
-        </a>     
+        </a>
 
 		<a class="mt-4" href="{{ route('staff') }}">
             <div class="p-2 shadow-lg {{ $slot == 'staff' ? 'bg-orange-300' : 'bg-[#ffffff]' }} w-[200px] rounded-3xl hover:bg-orange-300 text-left align-center">
 				<i class="mx-2 bi bi-people-fill"></i>
                 <span class="text-gray-900 font-bold text-black">Karyawan</span>
             </div>
-        </a>     
+        </a>
 
         <a class="mt-4 mb-4" href="{{ route('staff') }}">
             <div class="p-2 shadow-lg {{ $slot == 'role_staff' ? 'bg-orange-300' : 'bg-[#ffffff]' }} w-[200px] rounded-3xl hover:bg-orange-300 text-left align-center">
 				<i class="mx-2 bi bi-briefcase-fill"></i>
                 <span class="text-gray-900 font-bold text-black">Jabatan</span>
             </div>
-        </a>     
+        </a>
 
         <hr class="my-2 border-t-1 w-[200px]"></hr>
 
@@ -47,7 +47,7 @@
 				<i class="mx-2 bi bi-arrow-left-square-fill"></i>
                 <span class="font-bold">Logout</span>
             </div>
-        </a>     
+        </a>
 
     </div>
 </div>

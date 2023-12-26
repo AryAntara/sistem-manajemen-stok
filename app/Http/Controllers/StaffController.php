@@ -13,9 +13,9 @@ class StaffController extends Controller
 {
     /**
      * Show list of data employers
-     * 
+     *
      * @param Request $request
-     * 
+     *
      * @return View
      */
     function index(Request $request)
@@ -29,21 +29,21 @@ class StaffController extends Controller
         $skiped = ($page - 1) * $limit;
 
         // search any staff ?
-        $query = $request->q;         
+        $query = $request->q;
         if($query){
             $staff_query->where("name","like","%".$query."%");
         }
 
         $staff_entries = $staff_query->take($limit)->skip($skiped)->get();
-        $staff_pages_length = (int) floor(Staff::count() / 10) + 1;
+        $staff_pages_length = (int) floor(Staff::count() / $limit) + 1;
         return view("pages.menu-karyawan", compact("staff_entries", "staff_pages_length", "page", "query"));
     }
 
     /**
-     * Delete a staff by their id 
-     * 
+     * Delete a staff by their id
+     *
      * @param int $staff_id
-     * 
+     *
      * @return RedirectResponse
      */
     public function delete($staff_id)
@@ -57,9 +57,9 @@ class StaffController extends Controller
 
     /**
      * Create new staff entry
-     * 
+     *
      * @param Request $request
-     * 
+     *
      * @return RedirectResponse
      */
     public function create(Request $request)
@@ -84,7 +84,7 @@ class StaffController extends Controller
         $filename = "";
         if ($file) {
             $filename = date('d_m_Y-H:i:s.') . $file->getClientOriginalExtension();
-            $path = Config::get('filesystems.disks.public.profile');            
+            $path = Config::get('filesystems.disks.public.profile');
             $file->move($path, $filename);
         }
 
@@ -107,42 +107,42 @@ class StaffController extends Controller
 
     /**
      * Create new staff entry
-     * 
+     *
      * @param Request $request
      * @param int $id
-     * 
+     *
      * @return RedirectResponse
      */
     public function update(Request $request, $id)
-    {        
+    {
         $validated = $request->validate([
             'name' => 'required',
             'phone_number' => 'required',
             'role' => 'required',
             'address' => 'required',
             'birth_date' => 'date:d-m-Y',
-            'username' => 'required', 
+            'username' => 'required',
             'gender' => 'required'
         ], [
             'date' => 'Format tanggal tidak valid',
             'required' => 'Data :attribute dibutuhkan'
         ]);
-        
+
         // older staff data
         $staff_entry = Staff::find($id);
 
         // save photo
-        $file = $request->file('profile_photo');        
+        $file = $request->file('profile_photo');
         $new_filename = $staff_entry->profile_photo;
         if ($file) {
             $filename = $staff_entry->profile_photo;
-            $path = Config::get('filesystems.disks.public.profile');            
+            $path = Config::get('filesystems.disks.public.profile');
             $fullpath = $path.'/'.$filename;
-            
-            // delete older photo 
+
+            // delete older photo
             $is_file = is_file($fullpath);
-            if($is_file) unlink($fullpath);            
-            // store new file 
+            if($is_file) unlink($fullpath);
+            // store new file
             $new_filename = date('d_m_Y-H:i:s.') . $file->getClientOriginalExtension();
             $file->move($path, $new_filename);
         }
@@ -159,7 +159,7 @@ class StaffController extends Controller
             'birth_date' => $validated['birth_date']
         ];
 
-        Staff::where('id', $id)->update($staff_data);        
+        Staff::where('id', $id)->update($staff_data);
         return redirect()->back();
     }
 
