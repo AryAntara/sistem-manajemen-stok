@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Role_staff;
 
 class karyawanModalAdd extends Component
 {
@@ -21,6 +22,7 @@ class karyawanModalAdd extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.karyawan-modal-add');
+        $role_staff_entries = Role_staff::get();
+        return view('components.karyawan-modal-add', compact('role_staff_entries'));
     }
 }

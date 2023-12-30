@@ -45,6 +45,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="grid grid-cols-2 gap-x-4">
+                    <div class="mt-10">
+                        <div class="flex text-2xl font-bold">
+                            <i class="bi bi-people-fill me-4"></i>
+                            <span>Data Jabatan</span>
+                        </div>
+                        <div class="border-2 mt-2 rounded-xl bg-white/75 flex p-16 justify-between shadow-xl">
+                            <div class="flex justify-center">
+                                <p class="text-[75px] my-auto text-[#368D5B] font-bold h-max me-8 p-0">{{ $count_role }}</p>
+                                <div class="font-bold  text-[#368D5B] flex flex-col justify-center">
+                                    <p class="text-[50px] h-max p-0">Total</p><span class="text-[25px]">Jabatan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <div class="flex text-2xl font-bold">
+                            <i class="bi bi-people-fill me-4"></i>
+                            <span>Data Product</span>
+                        </div>
+                        <div class="border-2 mt-2 rounded-xl bg-white/75 flex p-16 justify-between shadow-xl">
+                            <div class="flex justify-center">
+                                <p class="text-[75px] my-auto text-[#368D5B] font-bold h-max me-8 p-0">{{ $count_product }}</p>
+                                <div class="font-bold  text-[#368D5B] flex flex-col justify-center">
+                                    <p class="text-[50px] h-max p-0">Total</p><span class="text-[25px]">Produk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

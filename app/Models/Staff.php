@@ -78,11 +78,11 @@ class Staff extends Model implements Authenticatable
     public function getProfilePhotoUrlAttribute()
     {
         $filename = $this->profile_photo;
-        
-        if(is_file(Config::get('filesystems.disks.public.profile') . '/' . $filename)){
-            return url('storage/profile/' . $filename);    
+
+        if(is_file(public_path('images/profile') . '/' . $filename)){
+            return asset('images/profile/' . $filename);
         }
-        
-        return url('storage/profile/not-found.jpg');
+
+        return asset('images/profile/not-found.jpg');
     }
 }

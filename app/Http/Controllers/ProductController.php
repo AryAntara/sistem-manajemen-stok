@@ -32,8 +32,8 @@ class ProductController extends Controller
             $product_query->where('name', 'like', '%' . $query . '%');
         }
 
+        $page_length = (int) floor($product_query->count() / $limit) + 1;
         $product_entries = $product_query->orderBy("created_at", "desc")->take($limit)->skip($skiped)->get();
-        $page_length = (int) floor(Product::count() / $limit) + 1;
 
         return view("pages.product", compact(
             'product_entries',

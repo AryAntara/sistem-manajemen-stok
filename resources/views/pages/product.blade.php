@@ -20,7 +20,6 @@
                             <input type="text"
                                 class="w-auto bg-[#368D5B] outline-none text-white mx-2 p-1 placeholder-white"
                                 placeholder="Cari nama produk..." name="q" value="{{ $query ?? '' }}">
-
                         </div>
                     </form>
 
@@ -43,10 +42,14 @@
                                     <th class="py-2" align="left">Kode</th>
                                     <th class="py-2" align="left">Jenis</th>
                                     <th class="py-2" align="left">Harga</th>
+                                    <th class="py-2" align="left">Stok</th>
                                     <th class="py-2" align="left">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no = 0;
+                                @endphp
                                 @foreach ($product_entries as $index => $product_entry)
                                     @php
                                         $no = ($page - 1) * 10 + $index + 1;
@@ -104,6 +107,9 @@
                                                 <input x-show='isEdited'
                                                     class="w-[100px] bg-transparent outline-none border-b-2 border-black"
                                                     placeholder="Harga" name="price" value="{{ $product_entry->price }}">
+                                            </td>
+                                            <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
+                                                <span>{{ $product_entry->stock_final }} Unit</span>
                                             </td>
                                             <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                                 <div class="flex">
@@ -194,7 +200,7 @@
                                     <td class="py-2 {{ $data_count % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         <input class="w-[100px] bg-transparent outline-none border-b-2 border-black"
                                             placeholder="Jenis" name="category">
-                                    <td class="py-2 {{ $data_count % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
+                                    <td colspan="2" class="py-2 {{ $data_count % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         <input class="w-[100px] bg-transparent outline-none border-b-2 border-black"
                                             placeholder="Harga" name="price">
                                     <td class="py-2 {{ $data_count % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">

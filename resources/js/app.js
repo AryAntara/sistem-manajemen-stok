@@ -82,7 +82,7 @@ async function sendPostFromForm(selector) {
     const form = document.querySelector(selector)
         , url = form.getAttribute('action')
         , formData = new FormData(form)
-        , fields = Array.from(form.querySelectorAll('input, select')).map(item => item.getAttribute("name"))
+        , fields = Array.from(form.querySelectorAll('input, select, textarea')).map(item => item.getAttribute("name"))
 
     try {
         await axios.post(url, formData)
@@ -113,7 +113,7 @@ async function sendPost(url, selector) {
     // show loader
     html.toggleLoader(false)
     const formWrapper = document.querySelector(selector)
-        , fieldElements = Array.from(formWrapper.querySelectorAll('input, select'))
+        , fieldElements = Array.from(formWrapper.querySelectorAll('input, select, textarea'))
         , fields = fieldElements.map(item => item.getAttribute("name"))
 
     const formData = new FormData();

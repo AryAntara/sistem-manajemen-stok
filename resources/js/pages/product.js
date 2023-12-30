@@ -46,6 +46,7 @@ function mapErrorMessageOfInputText(errorMessage, fieldName){
  * @param {number?} id - uniqe id for input id
  */
 function showProductImage(id){
+    if(typeof id == 'object') id = false;
     const image =
         !id ?
         document.querySelector(`${FORM_CREATE_SELECTOR} input[type=file]`) :

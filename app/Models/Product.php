@@ -33,7 +33,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $appends = ['price_in_k', 'image_url'];
+    protected $appends = ['price_in_k', 'image_url', 'stock_final'];
 
     /**
      * convert the price into K annotation
@@ -57,6 +57,15 @@ class Product extends Model
         }
 
         return url('storage/profile/not-found.jpg');
+    }
+
+    /**
+     * Get final stock of an product from product code
+     *
+     * @return int
+     */
+    public function getStockFinalAttribute(){
+        return Stock::where('product_code', $this->code)->orderBy('id', 'DESC')->value('stock_final') ?? 0;
     }
 
 }

@@ -29,8 +29,9 @@
                 </div>
                 {{-- Role --}}
                 <select class="text-xl mt-1 mb-2 font-bold outline-none border-b-2 w-max bg-white" name="role">
-                    <option value="Programmer">Programmer</option>
-                    <option value="2">Desainner</option>
+                    @foreach ($role_staff_entries as $role_staff_entry)
+                        <option value="{{ $role_staff_entry->id }}">{{ $role_staff_entry->label }}</option>
+                    @endforeach
                 </select>
                 {{-- Detail data --}}
                 <div class="grid grid-cols-2 gap-8 mt-8 text-gray-600 font-bold">

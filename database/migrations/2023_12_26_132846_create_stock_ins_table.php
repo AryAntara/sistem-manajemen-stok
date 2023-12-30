@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('role_staffs', function (Blueprint $table) {
+        Schema::create('stock_ins', function (Blueprint $table) {
             $table->id();
-            $table->string('label', 50);
-            $table->string('description');
+            $table->unsignedBigInteger('staff_id');
+            $table->string('product_name');
+            $table->string('product_code');
+            $table->integer('qty');
+            $table->integer('price');
+            $table->string('reason');
+            $table->datetime('published_at',1)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('role_staffs');
+        Schema::dropIfExists('stock_ins');
     }
 };

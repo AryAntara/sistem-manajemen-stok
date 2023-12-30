@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role_staff;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 use Illuminate\View\View;
@@ -34,8 +35,8 @@ class StaffController extends Controller
             $staff_query->where("name","like","%".$query."%");
         }
 
+        $staff_pages_length = (int) floor($staff_query->count() / $limit) + 1;
         $staff_entries = $staff_query->take($limit)->skip($skiped)->get();
-        $staff_pages_length = (int) floor(Staff::count() / $limit) + 1;
         return view("pages.menu-karyawan", compact("staff_entries", "staff_pages_length", "page", "query"));
     }
 
@@ -83,9 +84,8 @@ class StaffController extends Controller
         $file = $request->file('profile_photo');
         $filename = "";
         if ($file) {
-            $filename = date('d_m_Y-H:i:s.') . $file->getClientOriginalExtension();
-            $path = Config::get('filesystems.disks.public.profile');
-            $file->move($path, $filename);
+            $filename = date('d_m_Y-His.') . $file->getClientOriginalExtension();
+            $file->move('images/profile', $filename);
         }
 
         $staff_data = [
@@ -96,7 +96,7 @@ class StaffController extends Controller
             'address' => $validated['address'],
             'username' => $validated['username'],
             'password' => Hash::make($validated['password']),
-            'id_role_staffs' => 1,
+            'id_role_staffs' => $validated['role'],
             'birth_date' => $validated['birth_date']
         ];
 
