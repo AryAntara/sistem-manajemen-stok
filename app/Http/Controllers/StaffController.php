@@ -37,7 +37,8 @@ class StaffController extends Controller
 
         $staff_pages_length = (int) floor($staff_query->count() / $limit) + 1;
         $staff_entries = $staff_query->take($limit)->skip($skiped)->get();
-        return view("pages.menu-karyawan", compact("staff_entries", "staff_pages_length", "page", "query"));
+        $role_staff_entries = Role_staff::get();
+        return view("pages.menu-karyawan", compact("staff_entries", "staff_pages_length", "page", "query", "role_staff_entries"));
     }
 
     /**
