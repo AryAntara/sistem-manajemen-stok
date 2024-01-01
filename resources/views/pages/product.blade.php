@@ -227,7 +227,7 @@
                     </table>
 
                     @if ($product_entries->count() < 1)
-                        <div class="w-100% text-3xl mt-24 font-bold text-gray-900/75 flex justify-center items-center">
+                        <div z-show="!isAdded" class="w-100% text-3xl mt-24 font-bold text-gray-900/75 flex justify-center items-center">
                             Data
                             Kosong</div>
                     @endif
