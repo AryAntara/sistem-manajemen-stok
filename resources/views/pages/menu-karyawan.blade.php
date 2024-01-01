@@ -33,9 +33,7 @@
                         @php
                             $id = 1;
                         @endphp
-                        <x-karyawan-modal-add>
-                            {{ $id }}
-                        </x-karyawan-modal-add>
+                        @include('components.karyawan-modal-add', ['role_staf_entries' => $role_staff_entries])
                     </div>
                 </div>
             </div>
