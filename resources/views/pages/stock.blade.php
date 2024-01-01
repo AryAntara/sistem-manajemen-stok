@@ -34,7 +34,7 @@
                                     <th class="py-2" align="left">Harga</th>
                                     <th class="py-2" align="left">Jumlah</th>
                                     <th class="py-2" align="left">Type</th>
-                                    <th class="py-2" align="left">Alasan</th>
+                                    <th class="py-2" align="left">Keterangan</th>
                                     <th class="py-2" align="left">Aksi</th>
                                 </tr>
                             </thead>
@@ -169,7 +169,7 @@
                                         </select>
                                     </td>
                                     <td class="py-2 {{ $data_count % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
-                                        <textarea class="w-[300px] p-4 bg-transparent outline-none border-2 border-black" placeholder="Tulis Alasan..." name="reason"></textarea>
+                                        <textarea class="w-[300px] p-4 bg-transparent outline-none border-2 border-black" placeholder="Tulis Keterangan..." name="reason"></textarea>
                                     </td>
                                     <td class="py-2 {{ $data_count % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         <div class="flex">
