@@ -33,7 +33,7 @@
                         @php
                             $id = 1;
                         @endphp
-                        <x-karyawan-modal-add :rolestaff>
+                        <x-karyawan-modal-add>
                             {{ $id }}
                         </x-karyawan-modal-add>
                     </div>
