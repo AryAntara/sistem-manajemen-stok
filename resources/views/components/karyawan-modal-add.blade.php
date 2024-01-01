@@ -83,8 +83,8 @@
                         type="button">
                         <i class="bi bi-plus-circle-fill me-2"></i> Tambah</button>
                     <button class="bg-[#368D5B] p-2 rounded-full text-white px-4 mt-2 font-bold w-max"
-                        x-on:click="isShowModalAdd = false">
-                        <i class="bi bi-x-circle-fill me-2" type="button"></i> Batal</button>
+                        x-on:click="isShowModalAdd = false" type="button">
+                        <i class="bi bi-x-circle-fill me-2"></i> Batal</button>
                 </div>
 
             </div>
