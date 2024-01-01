@@ -23,6 +23,7 @@ class karyawanModalAdd extends Component
     public function render(): View|Closure|string
     {
         $role_staff_entries = Role_staff::get();
+        dd($role_staff_entries);
         return view('components.karyawan-modal-add', compact('role_staff_entries'));
     }
 }
