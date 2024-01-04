@@ -58,7 +58,8 @@
                                         {{ ($page - 1) * 10 + $index + 1 }}.</td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         {{ $staff_entry->name }}</td>
-                                    <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">Kasir
+                                    <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
+                                        {{ $staff_entry->role_staff ? $staff_entry->role_staff->label : "Tidak Ada" }}
                                     </td>
                                     <td class="py-2 {{ $index % 2 == 0 ? 'bg-green-50' : 'bg-white' }}">
                                         {{ $staff_entry->age }} Tahun</td>
@@ -79,7 +80,7 @@
 
                                                 <x-karyawan-modal-detail :username="$staff_entry->username" :phoneNumber="$staff_entry->phone_number"
                                                     :address="$staff_entry->address" :name="$staff_entry->name" :age="$staff_entry->age" :profile="$staff_entry->profile_photo_url"
-                                                    :gender="$staff_entry->gender">
+                                                    :gender="$staff_entry->gender" :role="$staff_entry->role_staff">
                                                 </x-karyawan-modal-detail>
                                             </div>
 
@@ -111,8 +112,10 @@
                                                     <p x-show='isShowText' class="font-bold mx-1">edit</p>
                                                 </button>
 
-                                                <x-karyawan-modal-edit :id="$staff_entry->id" :staff="$staff_entry">
-                                                </x-karyawan-modal-edit>
+                   
+                                   
+                                                @include('components.karyawan-modal-edit', ['role_staf_entries' => $role_staff_entries,
+                                                'id'=> $staff_entry->id, 'staff' => $staff_entry ])
                                             </div>
                                         </div>
                                     </td>

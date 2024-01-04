@@ -155,7 +155,7 @@ class StaffController extends Controller
             'address' => $validated['address'],
             'username' => $validated['username'],
             'password' => $request->input('password') ? Hash::make($request->input('password')) : $staff_entry->password,
-            'id_role_staffs' => 1,
+            'id_role_staffs' => $request->input('role'),
             'gender' => $validated['gender'],
             'birth_date' => $validated['birth_date']
         ];

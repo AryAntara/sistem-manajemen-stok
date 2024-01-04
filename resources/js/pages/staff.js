@@ -1,3 +1,5 @@
+import html from "../html.js"
+
 /**
  * Custom error message map for photo profile
  *
@@ -14,7 +16,7 @@ function mapErrorMessageOfPhotoProfile(errorMessage, fieldName, id = null) {
 
 
     // change color to red
-    removeAndAddClass(imageWrapperParentNode, ["bg-gray-700"], ["bg-red-400"])
+    html.removeAndAddClass(imageWrapperParentNode, ["bg-gray-700"], ["bg-red-400"])
 
     imageWrapperParentNode.parentNode.querySelector("p").innerText = errorMessage
 }

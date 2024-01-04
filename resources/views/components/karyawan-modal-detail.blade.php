@@ -11,7 +11,7 @@
                 {{ $name }}
             </p>
             {{-- Role --}}
-            <p class="text-xl mt-1 mb-2 font-bold"> Programmer </p>
+            <p class="text-xl mt-1 mb-2 font-bold"> {{ $role_staff }} </p>
             {{-- Detail data --}}
             <div class="grid grid-cols-2 gap-8 mt-8 text-gray-500">
                 <div>

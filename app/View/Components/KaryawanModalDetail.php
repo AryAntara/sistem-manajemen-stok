@@ -15,11 +15,12 @@ class KaryawanModalDetail extends Component
     public $address;
     public $profile_photo_url;
     public $gender;
+    public $role_user;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($username, $name, $phoneNumber, $age, $address, $profile, $gender)
+    public function __construct($username, $name, $phoneNumber, $age, $address, $profile, $gender, $role)
     {
         $this->username = $username;
         $this->name = $name;
@@ -28,6 +29,7 @@ class KaryawanModalDetail extends Component
         $this->address = $address;        
         $this->profile_photo_url = $profile;
         $this->gender = $gender;
+        $this->role_user = $role;
     }
 
     /**
@@ -42,7 +44,8 @@ class KaryawanModalDetail extends Component
             "age"=> $this->age,
             "address"=> $this->address,
             "profile_photo_url" => $this->profile_photo_url,
-            "gender" => $this->gender
+            "gender" => $this->gender,
+            "role_staff" => $this->role_user ? $this->role_user->label : "Tidak Ada"
         ];
         return view('components.karyawan-modal-detail', $data);
     }

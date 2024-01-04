@@ -33,7 +33,7 @@ Route::
 
             Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
         });
-Route::group(['middleware' => 'auth'], function () {
+    // Route::group(['middleware' => 'auth'], function () {
     Route::prefix('/menu-karyawan')->group(function () {
         Route::get('/', [StaffController::class, 'index'])->name('staff');
         Route::get('/delete/{staff_id}', [StaffController::class, 'delete'])->name('staff.delete');
@@ -65,4 +65,4 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-});
+// });

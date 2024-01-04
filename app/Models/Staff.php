@@ -75,6 +75,10 @@ class Staff extends Model implements Authenticatable
         return round((strtotime(date('D-m-y')) - strtotime($this->birth_date)) / (self::SECOND_TO_YEAR));
     }
 
+    public function role_staff(){
+        return $this->belongsTo(Role_staff::class,'id_role_staffs', 'id');
+    }
+
     public function getProfilePhotoUrlAttribute()
     {
         $filename = $this->profile_photo;
