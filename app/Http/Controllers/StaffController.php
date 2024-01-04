@@ -137,7 +137,7 @@ class StaffController extends Controller
         $new_filename = $staff_entry->profile_photo;
         if ($file) {
             $filename = $staff_entry->profile_photo;
-            $path = Config::get('filesystems.disks.public.profile');
+            $path = public_path('images/profile');
             $fullpath = $path.'/'.$filename;
 
             // delete older photo
