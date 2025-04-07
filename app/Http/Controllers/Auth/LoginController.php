@@ -28,8 +28,6 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
-        ;
-
 
         return back()->withErrors([
             'username' => 'Username or Password is Not Valid.',
